@@ -1,0 +1,4 @@
+{
+  "allowedTools": ["Read", "Bash", "Grep", "Glob"],
+  "autoApproveTools": true
+}
