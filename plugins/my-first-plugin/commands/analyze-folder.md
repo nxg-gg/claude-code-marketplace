@@ -1,4 +1,5 @@
 ---
+name: analyze
 description: Analyzes a folder structure and explains how the code works using the folder-analyzer agent
 argument-hint: "<path/to/folder>"
 ---
