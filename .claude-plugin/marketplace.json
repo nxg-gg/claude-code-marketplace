@@ -21,7 +21,9 @@
       "agents": [
         "./agents/folder-analyzer.md"
       ],
-      "commands": []
+      "commands": [
+        "./commands/analyze-folder.md"
+      ]
     }
   ]
 }
