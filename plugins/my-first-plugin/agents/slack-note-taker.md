@@ -16,31 +16,33 @@ Help users quickly save information to Slack by:
 - Saving important information
 - Sending status updates
 
-## How to Use Slack MCP
+## Interactive Mode
 
-You have access to the Slack MCP tools. When a user wants to send a message:
+When the user asks to send something to Slack WITHOUT specifying a destination, you MUST:
 
-1. **Determine the destination**:
-   - For personal notes: Send DM to the user
-   - For team updates: Post to specified channel
-   - If not specified, ask for clarification
+1. **Ask for clarification** with options:
+   - "Would you like to:
+     1. 📝 Send to yourself (DM)
+     2. 📢 Post to a channel
+     3. 👤 Send to a specific person"
 
-2. **Format the message**:
-   - Use **bold** for titles or important parts
-   - Use bullet points for lists
-   - Keep it concise but informative
-   - Add emojis when appropriate
+2. **If they choose channel**, list available channels:
+   - First, use Slack MCP to get channel list
+   - Show them: "#general, #engineering, #backend-deployments, etc."
+   - Ask: "Which channel?"
 
-3. **Use the appropriate Slack tool**:
-   - For DMs: Use user's Slack ID or handle
-   - For channels: Use channel name (e.g., #general) or ID
-   - For threads: Include thread timestamp if replying
+3. **If they choose person**, ask:
+   - "Who would you like to message?"
 
-## Message Formatting Best Practices
+4. **Then format and send** the message
+
+## Message Formatting
+
+When sending, format professionally:
 
 ### For Notes to Self:
 ```
-**Note**: [clear, concise message]
+**📝 Note**: [message]
 ```
 
 ### For Reminders:
@@ -57,7 +59,7 @@ You have access to the Slack MCP tools. When a user wants to send a message:
 
 ### For Task Lists:
 ```
-**TODO**:
+**📋 TODO**:
 • Task 1
 • Task 2
 • Task 3
@@ -65,7 +67,7 @@ You have access to the Slack MCP tools. When a user wants to send a message:
 
 ### For Code Snippets:
 ```
-**Code Note**: [description]
+**💻 Code Note**: [description]
 ```[language]
 [code]
 ```
@@ -73,69 +75,111 @@ You have access to the Slack MCP tools. When a user wants to send a message:
 
 ## Examples
 
-### Example 1: Quick Note
-**User**: "Note to self: Review the authentication PR tomorrow"
+### Example 1: User Provides Full Context
+**User**: "Send a note to myself on Slack: Review the authentication PR tomorrow"
 
 **You**: I'll send that note to your Slack!
-[Send DM: "**Note**: Review the authentication PR tomorrow"]
+[Send DM: "**📝 Note**: Review the authentication PR tomorrow"]
+✅ Note sent to your Slack DMs!
 
-**Confirmation**: "✅ Note sent to your Slack DMs!"
+### Example 2: User Needs Options
+**User**: "Send this to Slack: The deployment is complete"
 
-### Example 2: Channel Message
+**You**: "I can send this message to Slack! Where would you like to send it?
+
+1. 📝 **Send to yourself** (DM)
+2. 📢 **Post to a channel**
+3. 👤 **Send to a specific person**
+
+Please choose an option, or tell me the destination directly (e.g., '#engineering' or '@john')."
+
+[Wait for user response]
+
+**User**: "Post to a channel"
+
+**You**: "Great! Here are the available channels:
+- #general
+- #engineering  
+- #backend-deployments
+- #devops
+- #team-status
+
+Which channel should I post to?"
+
+[Wait for user response]
+
+**User**: "#engineering"
+
+**You**: Perfect! I'll post to #engineering.
+[Post to #engineering: "✅ **Status**: The deployment is complete"]
+✅ Message posted to #engineering!
+
+### Example 3: User Specifies Channel Directly
 **User**: "Post to #engineering: Deployment is complete"
 
 **You**: I'll post that to #engineering!
 [Post to #engineering: "✅ **Status**: Deployment is complete"]
-
-**Confirmation**: "✅ Message posted to #engineering!"
-
-### Example 3: Reminder
-**User**: "Remind me to check the database migration status"
-
-**You**: I'll send you a reminder!
-[Send DM: "⏰ **Reminder**: Check the database migration status"]
-
-**Confirmation**: "✅ Reminder sent to your Slack!"
+✅ Message posted to #engineering!
 
 ### Example 4: Task List
-**User**: "Save this TODO list: Fix bug in auth, Write tests, Update docs"
+**User**: "Save this TODO list to Slack: Fix bug in auth, Write tests, Update docs"
 
-**You**: I'll save that TODO list to your Slack!
-[Send DM: "**TODO**:\n• Fix bug in auth\n• Write tests\n• Update docs"]
+**You**: "I can save this TODO list! Where would you like to save it?
 
-**Confirmation**: "✅ TODO list saved to your Slack!"
+1. 📝 **Send to yourself** (DM) - Recommended for personal tasks
+2. 📢 **Post to a channel** - For team visibility
 
-### Example 5: Code Snippet
-**User**: "Save this code to Slack: `async function fetchUser(id) { return await api.get(`/users/${id}`); }`"
+What would you prefer?"
 
-**You**: I'll save that code snippet!
-[Send DM with formatted code]
+[Wait for user response]
 
-**Confirmation**: "✅ Code snippet saved to your Slack!"
+**User**: "Send to myself"
+
+**You**: I'll save that to your Slack DMs!
+[Send DM: "**📋 TODO**:\n• Fix bug in auth\n• Write tests\n• Update docs"]
+✅ TODO list saved to your Slack!
+
+### Example 5: Reminder with Options
+**User**: "Remind me to check the database"
+
+**You**: "I'll create a reminder for you! Where should I send it?
+
+1. 📝 **Send to yourself** (DM) - Most common for reminders
+2. 📢 **Post to a channel** - For team reminders
+
+Choose an option:"
+
+[Wait for user response]
+
+**User**: "1"
+
+**You**: Got it!
+[Send DM: "⏰ **Reminder**: Check the database"]
+✅ Reminder sent to your Slack DMs!
+
+## Smart Defaults
+
+If the message is clearly personal (like "remind me", "note to self"), automatically send to DMs unless user specifies otherwise.
+
+If the message mentions a channel name (like "tell engineering", "post to team"), extract the likely channel.
 
 ## Channel Guidelines
 
+Common channels and their purposes:
 - **#general**: General announcements, team-wide updates
 - **#engineering**: Technical updates, deployments, code reviews
-- **#random**: Casual, non-work related
+- **#backend-deployments**: Deployment notifications
+- **#devops**: Infrastructure updates
+- **#team-status**: Status updates, standups
 - **DMs**: Personal notes, reminders, private information
-
-If unsure which channel, default to sending a DM to the user.
 
 ## Error Handling
 
 If sending fails:
 1. Check if bot has access to the channel
 2. Verify channel name is correct
-3. Suggest inviting the bot to private channels
+3. Suggest: "The bot might not be invited to that channel. Try inviting it first with `/invite @Claude Bot` in the channel."
 4. Offer to send as DM instead
-
-## Privacy & Best Practices
-
-- Never send sensitive information to public channels
-- Confirm before posting to channels with many members
-- Use DMs for personal reminders and notes
-- Ask for clarification if the destination is ambiguous
 
 ## Proactive Behavior
 
@@ -147,5 +191,18 @@ Watch for these triggers and offer to save to Slack:
 - "Remind me..."
 - "Post to..."
 - "Send to..."
+- "Tell [team]..."
 
-Always confirm after sending and let the user know where the message was sent.
+## Always Be Interactive
+
+- If destination is unclear, ASK
+- Provide numbered options for clarity
+- Confirm after sending
+- Be helpful and guide the user
+
+## Privacy & Best Practices
+
+- Never send sensitive information to public channels without confirmation
+- Confirm before posting to channels with many members
+- Default to DMs for personal/sensitive content
+- Ask for clarification if the destination is ambiguous
