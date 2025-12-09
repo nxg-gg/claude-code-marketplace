@@ -10,7 +10,6 @@
   "repository": "https://github.com/nxg-gg/claude-code-marketplace",
   "license": "Unlicense",
   "keywords": ["slack", "messaging", "notifications", "mcp", "communication"],
-  "category": "communication",
   "mcpServers": {
     "slack": {
       "command": "npx",

@@ -17,7 +17,6 @@
       "repository": "https://github.com/nxg-gg/claude-code-marketplace",
       "license": "Unlicense",
       "keywords": ["analysis", "folder", "code-review", "slack", "productivity"],
-      "category": "productivity",
       "agents": [
         "./agents/folder-analyzer.md",
         "./agents/slack-note-taker.md"
@@ -39,8 +38,7 @@
       "homepage": "https://github.com/nxg-gg/claude-code-marketplace",
       "repository": "https://github.com/nxg-gg/claude-code-marketplace",
       "license": "Unlicense",
-      "keywords": ["slack", "messaging", "notifications", "mcp", "communication"],
-      "category": "communication"
+      "keywords": ["slack", "messaging", "notifications", "mcp", "communication"]
     }
   ]
 }
