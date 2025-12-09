@@ -19,11 +19,26 @@
       "keywords": ["analysis", "folder", "code-review"],
       "category": "productivity",
       "agents": [
-        "./agents/folder-analyzer.md"
+        "./agents/folder-analyzer.md",
+        "./agents/slack-note-taker.md"
       ],
       "commands": [
         "./commands/analyze-folder.md"
       ]
+    },
+    {
+      "name": "slack-integration",
+      "source": "./plugins/slack-integration",
+      "description": "Slack integration via MCP - send messages, read channels, DM yourself, and interact with your workspace",
+      "version": "1.0.0",
+      "author": {
+        "name": "nxg-gg"
+      },
+      "homepage": "https://github.com/nxg-gg/claude-code-marketplace",
+      "repository": "https://github.com/nxg-gg/claude-code-marketplace",
+      "license": "Unlicense",
+      "keywords": ["slack", "messaging", "notifications", "mcp", "communication"],
+      "category": "communication"
     }
   ]
 }
