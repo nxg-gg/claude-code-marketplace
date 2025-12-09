@@ -8,7 +8,7 @@
     {
       "name": "my-first-plugin",
       "source": "./plugins/my-first-plugin",
-      "description": "Custom agents for code analysis and folder exploration",
+      "description": "Custom agents for code analysis, folder exploration, and Slack integration",
       "version": "1.0.0",
       "author": {
         "name": "nxg-gg"
@@ -16,14 +16,16 @@
       "homepage": "https://github.com/nxg-gg/claude-code-marketplace",
       "repository": "https://github.com/nxg-gg/claude-code-marketplace",
       "license": "Unlicense",
-      "keywords": ["analysis", "folder", "code-review"],
+      "keywords": ["analysis", "folder", "code-review", "slack", "productivity"],
       "category": "productivity",
       "agents": [
         "./agents/folder-analyzer.md",
         "./agents/slack-note-taker.md"
       ],
       "commands": [
-        "./commands/analyze-folder.md"
+        "./commands/analyze-folder.md",
+        "./commands/slack-note.md",
+        "./commands/slack-post.md"
       ]
     },
     {
